@@ -7,11 +7,12 @@
     "scripts": [
     "background.js"
   ]},
+  "icons": {
+    "128": "m.png"
+  },
   "options_page": "options.html",
   "permissions": [
-    "<all_urls>",
-    "webRequest",
-    "webRequestBlocking"
+    "activeTab"
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'"
 }
