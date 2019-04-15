@@ -1,7 +1,12 @@
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
-    var redirects, pattern, from, to, redirecUrl;
-    redirects = JSON.parse(localStorage.getItem('redirects') || '[]');
+    var redirects, pattern, from, to, redirectUrl;
+    redirects = localStorage.getItem('disabled') == 'true' ? [] : [
+      [
+        "facebook.com(?!\/messages)",
+        "facebook.com/messages"
+      ]
+    ];
     for (var i=0; i<redirects.length; i++) {
       from = redirects[i][0];
       to = redirects[i][1];
@@ -15,7 +20,9 @@ chrome.webRequest.onBeforeRequest.addListener(
       if (match) {
         redirectUrl = details.url.replace(pattern, to);
         if (redirectUrl != details.url) {
-          return {redirectUrl: redirectUrl};
+          return {
+            redirectUrl: redirectUrl
+          };
         }
       }
     }

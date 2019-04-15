@@ -1,0 +1,17 @@
+{
+  "name": "MessageBook",
+  "description": "Skip Facebook's News Feed and go straight to messages",
+  "version": "1.0",
+  "manifest_version": 2,
+  "background": {
+    "scripts": [
+    "background.js"
+  ]},
+  "options_page": "options.html",
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self'"
+}
